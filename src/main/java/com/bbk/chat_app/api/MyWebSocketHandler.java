@@ -37,7 +37,7 @@ public class MyWebSocketHandler  implements WebSocketHandler {
         roomSessions.computeIfAbsent(chatMsg.getRoomId(), k -> ConcurrentHashMap.newKeySet()).add(session);
 
         // Save to DB
-        messageRepository.save(new ChatMessage(null, chatMsg.getSender(), chatMsg.getContent(), chatMsg.getRoomId(),  ChatMessage.MessageType.CHAT,chatMsg.getTimestamp()));
+        messageRepository.save(new ChatMessage(null, chatMsg.getSender(), chatMsg.getContent(), chatMsg.getRoomId(),  ChatMessage.MessageType.CHAT,System.currentTimeMillis()));
 
         // Broadcast to room
         String broadcast = objectMapper.writeValueAsString(chatMsg);

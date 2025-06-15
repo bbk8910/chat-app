@@ -7,9 +7,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-
 @Document(collection = "messages")
 @Getter
 @Setter
@@ -23,7 +20,7 @@ public class ChatMessage {
     private String roomId;
     private MessageType type;
 
-    private LocalDateTime timestamp;
+    private long timestamp;
 
 
     public enum MessageType {
